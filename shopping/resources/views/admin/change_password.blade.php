@@ -20,32 +20,34 @@
                             <div class="clearfix"></div>
                         </div>
                         <div class="x_content">
-                            <span class="text-success col-md-offset-2">
+                            @if (Session::get('error'))
+                              <div class="alert alert-error">
+                                {{ Session::get('error') }}
+                              </div>
+                            @endif
                             @if(Session::has('success'))
                                 <div class="alert alert-success"><em> {!! session('success') !!}</em></div>
                             @endif
-                            </span>
                             <br/>
                             {{ Form::open(
                                     array(
                                         'name'  => 'edit_password',
                                         'id' => 'edit_password',
-                                        'url' => 'password/change', 
+                                        'url' => 'admin/password', 
                                         'class' => "form-horizontal form-label-left"
                                     )
                                 )
                             }}
                                 <div class="form-group">
-                                    {{ Form::label('email', 'Email id:', array('class' => 'control-label col-md-3 col-sm-3 col-xs-12')) }}
+                                    {{ Form::label('old_password', 'Old Password:', array('class' => 'control-label col-md-3 col-sm-3 col-xs-12')) }}
                                     <div class="col-md-6 col-sm-6 col-xs-12">
-                                        {{ Form::email(
-                                            'email',
-                                            null,
-                                            array('class' => 'form-control col-md-7 col-xs-12', 'placeholder' => 'Example@gmail.com')
+                                        {{ Form::password(
+                                            'old_password',
+                                            array('class' => 'form-control col-md-7 col-xs-12', 'placeholder' => 'Old password')
                                             ) 
                                         }}
                                         <label class="text-danger">
-                                            <?php echo  $errors->first('email') ?>
+                                            <?php echo  $errors->first('old_password') ?>
                                         </label>
                                     </div>
                                 </div>

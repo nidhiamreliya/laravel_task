@@ -22,10 +22,10 @@
                 <div class="menu_section">
                     <h3>General</h3>
                     <ul class="nav side-menu">
-                        <li><a href="{{ url('admin/categories') }}"><i class="fa fa-list"> </i> Categories </a></li>
-                        <li><a href="{{ url('admin/products') }}"><i class="fa fa-shopping-basket"> </i> Products </a></li>
-                        <li><a href="{{ url('admin/orders') }}"><i class="fa fa-shopping-cart"> </i> Orders </a></li>
-                        <li><a href="{{ url('admin/users') }}"><i class="fa fa-users"> </i> Users </a></li>
+                        <li><a href="{{ url('admin/category') }}"><i class="fa fa-list"> </i> Categories </a></li>
+                        <li><a href="{{ url('admin/product') }}"><i class="fa fa-shopping-basket"> </i> Products </a></li>
+                        <li><a href="{{ url('admin/order') }}"><i class="fa fa-shopping-cart"> </i> Orders </a></li>
+                        <li><a href="{{ url('admin/user') }}"><i class="fa fa-users"> </i> Users </a></li>
                         <li><a href="{{ url('admin/password') }}"><i class="fa fa-key"> </i> Change password </a></li>
                     </ul>
                 </div>
@@ -34,7 +34,7 @@
 
             <!-- /menu footer buttons -->
             <div class="sidebar-footer">
-                <a href="#" data-toggle="tooltip" data-placement="top" title="Logout" style="width:100%;" >
+                <a href="{{ url('admin/logout') }}" data-toggle="tooltip" data-placement="top" title="Logout" style="width:100%;" >
                     <span class="glyphicon glyphicon-off" aria-hidden="true">Logout</span>
                 </a>
             </div>
@@ -58,7 +58,7 @@
                         </a>
                         <ul class="dropdown-menu dropdown-usermenu animated fadeInDown pull-right">
                             <li>
-                                <a href="#" class="btn"><i class="fa fa-sign-out pull-right"></i> Log Out</a>
+                                <a href="{{ url('admin/logout') }}" class="btn"><i class="fa fa-sign-out pull-right"></i> Log Out</a>
                             </li>
                         </ul>
                     </li>

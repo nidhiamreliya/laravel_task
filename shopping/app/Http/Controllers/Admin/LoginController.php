@@ -2,25 +2,29 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
+use App\Http\Requests\Admin\LoginRequest;
 
 use App\Http\Requests;
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\BaseController;
 use Sentinel;
 
-class LoginController extends Controller
+class LoginController extends BaseController
 {
+    public function __construct() 
+    {
+        parent::__construct();
+    }  
     /**
      * Display a Login form.
      */
     public function index()
     {
-        return view('admin.auth.login');
+        return view('admin.Auth.login');
     }
     /**
      * Login the user
      */
-    public function handleindex(LoginRequest $request)
+    public function handlelogin(LoginRequest $request)
     {
         $data = $request->all();        
         
@@ -28,9 +32,10 @@ class LoginController extends Controller
         {
             $user = Sentinel::getUser();
             
-            if($user->inRole('admin'))
+            if($user->inRole('Admin'))
             {
-                return redirect()->to('admin/dashboard');
+                echo "successful";
+                return redirect()->to('admin/home');
             }
             else
             {
@@ -42,5 +47,11 @@ class LoginController extends Controller
         {
             return redirect()->back()->withErrors('Please enter valid credentials.')->withInput();
         }
+    }
+
+    public function logout()
+    {
+        Sentinel::logout();
+        return redirect()->to('admin/login');
     }    
 }
