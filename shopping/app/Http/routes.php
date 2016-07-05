@@ -10,10 +10,6 @@
 | and give it the controller to call when that URI is requested.
 |
 */
-
-Route::get('/', function () {
-    return view('welcome');
-});
 Route::get('admin/login', [
 	'as' => 'user.login', 
 	'uses' => 'Admin\LoginController@index'
@@ -60,23 +56,105 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['adm
 		'uses' => 'OrderController@destroy'
 		]);
 });
-Route::get('user/login', [
-	'as' => 'user.login', 
-	'uses' => 'User\LoginController@index'
-]);
-Route::post('user/login', [
-	'as' => 'user.handlelogin', 
-	'uses' => 'User\LoginController@handlelogin'
-]);
-Route::get('user/logout', [
-	'as' => 'user.logout', 
-	'uses' => 'User\LoginController@logout'
-]);
-Route::group(['prefix' => 'user', 'namespace' => 'Client'], function() {
 
-	Route::get('/home', [
-		'as' => 'user.home', 
-		'uses' => 'SiteController@index'
+Route::group(['namespace' => 'Client'], function() {
+
+	Route::resource('/user', 'UserController');
+	Route::post('/login', [
+		'as' => 'user.login', 
+		'uses' => 'UserController@handlelogin'
 	]);
-	Route::resource('/register', 'RegisterController');
+	Route::get('/password', [
+		'as' => 'user.password', 
+		'uses' => 'UserController@forgot_psw'
+	]);
+	Route::post('/password', [
+		'as' => 'user.password', 
+		'uses' => 'UserController@handlePassword'
+	]);
+	Route::get('/password/{token}', [
+		'as' => 'password.change', 
+		'uses' => 'UserController@change_psw'
+	]);
+	Route::post('/password/{token}', [
+		'as' => 'password.change', 
+		'uses' => 'UserController@psw_change'
+	]);
+	Route::get('/logout', [
+		'as' => 'user.logout', 
+		'uses' => 'UserController@logout'
+	]);
+	Route::post('user/{id}', [
+		'as' => 'user.update', 
+		'uses' => 'UserController@update'
+	]);
+	Route::get('/checkout', [
+		'as' => 'user.checkout', 
+		'uses' => 'OrderController@checkout'
+	]);
+	Route::post('/order', [
+		'as' => 'user.order', 
+		'uses' => 'OrderController@order'
+	]);
+	Route::get('/order/{no}', [
+		'as' => 'user.order', 
+		'uses' => 'OrderController@bill'
+	]);
+	Route::get('/orders', [
+		'as' => 'user.orders', 
+		'uses' => 'OrderController@track_order'
+	]);
+	Route::get('/order/details/{order}', [
+		'as' => 'order.details', 
+		'uses' => 'OrderController@details'
+	]);
 });
+
+Route::get('/', [
+	'as' => 'user.home', 
+	'uses' => 'Client\SiteController@index'
+]);
+Route::get('product/{slug}', [
+	'as' => 'user.home', 
+	'uses' => 'Client\SiteController@product'
+]);
+Route::get('jewellery', [
+	'as' => 'user.jewellery', 
+	'uses' => 'Client\SiteController@products'
+]);
+Route::get('jewellery', [
+	'as' => 'user.jewellery', 
+	'uses' => 'Client\SiteController@products'
+]);
+Route::post('jewellery', [
+	'as' => 'user.jewellery', 
+	'uses' => 'Client\SiteController@product_list'
+]);
+Route::get('category/{slug}', [
+	'as' => 'user.jewellery', 
+	'uses' => 'Client\SiteController@category'
+]);
+Route::post('category/{slug}', [
+	'as' => 'user.jewellery', 
+	'uses' => 'Client\SiteController@category_list'
+]);
+Route::post('cart/add', [
+	'as' => 'cart.add', 
+	'uses' => 'Client\CartController@store'
+]);
+Route::get('cart', [
+	'as' => 'cart.add', 
+	'uses' => 'Client\CartController@index'
+]);
+Route::post('cart/remove', [
+	'as' => 'cart.remove', 
+	'uses' => 'Client\CartController@destroy'
+]);
+Route::post('cart/update', [
+	'as' => 'cart.update', 
+	'uses' => 'Client\CartController@update'
+]);
+Route::post('cart/count', [
+	'as' => 'cart.count', 
+	'uses' => 'Client\CartController@count'
+]);

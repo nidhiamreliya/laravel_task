@@ -2160,9 +2160,9 @@ color:#204056;
 .reg p:nth-child(2) {
  margin:0;
 }
-.reg form {
+/*.reg form {
   margin-top: 32px;
-}
+}*/
 .reg p a{
 text-decoration:none;
 color:#204056;
@@ -2176,8 +2176,8 @@ color: #000;
   -moz-transition: .5s all;
 }
 .reg ul {
-padding:0;
-margin:0 0 22px 0;
+padding: 20;
+/*margin:0 0 22px 0;*/
 }
 .reg span {
 width: 100%;
@@ -2282,9 +2282,7 @@ color: #000;
   -ms-transition: .5s all;
   -moz-transition: .5s all;
   }
-.reg ul:nth-child(6) {
-  margin: 0 0 32px 0;
-}
+
 .reg ul li:nth-child(2){
   margin-left: 3%;
 }
