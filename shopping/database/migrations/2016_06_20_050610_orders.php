@@ -20,6 +20,7 @@ class Orders extends Migration
             $table->float('amount');
             $table->date('delivery_date');
             $table->boolean('status');
+            $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users');
         });    

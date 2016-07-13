@@ -76,8 +76,8 @@ html[xmlns] .flexslider .slides {
  * DEFAULT THEME
  * ====================================================================================================================*/
 .flexslider {
-  height: 350px;
-  width: 40%;
+  height: 300px;
+  width: 33%;
   margin: 0 0 60px;
   background: #ffffff;
   border: 4px solid #ffffff;
@@ -93,6 +93,7 @@ html[xmlns] .flexslider .slides {
 }
 .flexslider .slides {
   zoom: 1;
+
 }
 .flexslider .slides img {
   height: 100%;
@@ -105,7 +106,7 @@ html[xmlns] .flexslider .slides {
   -o-transition: all 1s ease;
   transition: all 1s ease;
   border: 1px solid #D1CFCF;
-	padding: 2em 0em;
+	padding: 0em 0em;
 }
 
 .loading .flex-viewport {
@@ -235,9 +236,10 @@ html[xmlns] .flexslider .slides {
   overflow: hidden;
 }
 .flex-control-thumbs li {
-  width: 24.2%;
+  width: 24%;
   float: left;
   margin: 0 1% 0 0;
+  
 }
 .flex-control-thumbs li:nth-child(4){
 	margin:0;

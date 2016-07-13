@@ -25,18 +25,19 @@ $().ready(function() {
 			city: "required",
 			state: "required",
 			country: "required",
-			email_id: {
+			email: {
 				required: true,
 				email: true
 			},
 			password: {
 				required: true,
-				minlength: 6
+				minlength: 6,
 			},
-			confirm_password: {
+			password_confirmation: {
 				required: true,
 				minlength: 6,
 				equalTo: "#password"
+				
 			},
 			contact_no: {
 				required: true,
@@ -63,14 +64,14 @@ $().ready(function() {
 			},
 			password: {
 				required: "Please provide a Password",
-				minlength: "Your Password must be at least 6 characters long"
+				minlength: "Your Password must be at least 6 characters long",
 			},
-			confirm_password: {
+			password_confirmation: {
 				required: "Please provide a Password",
 				minlength: "Your Password must be at least 6 characters long",
-				equalTo: "Please enter the same Password as above"
+				equalTo: "Password not match "
 			},
-			email_id: {
+			email: {
 				required: "Please provide your email address",
 				email: "Please enter a valid email address",
 			},
@@ -94,7 +95,7 @@ $().ready(function() {
 	}),
 	$("#login").validate({
 		rules: {
-			email_id: {
+			email: {
 				required: true,
 			},
 			password: {
@@ -103,7 +104,7 @@ $().ready(function() {
 			}
 		},
 		messages: {
-			email_id: "Please enter your Email",
+			email: "Please enter your Email",
 			password: {
 				required: "Please provide a Password",
 				minlength: "Your Password must be at least 6 characters long"
@@ -124,7 +125,7 @@ $().ready(function() {
 			city: "required",
 			state: "required",
 			country: "required",
-			email_id: {
+			email: {
 				required: true,
 				email: true
 			},
@@ -144,7 +145,7 @@ $().ready(function() {
 		messages: {
 			first_name: "Please enter your Firstname",
 			last_name: "Please enter your Lastname",
-			email_id: {
+			email: {
 				required: "Please provide your email address",
 				email: "Please enter a valid email address",
 			},
@@ -175,7 +176,7 @@ $().ready(function() {
 				required: true,
 				number: true
 			},
-			visible: "required",
+			status: "required",
 		},
 		messages: {
 			category_id: "select category",
@@ -185,13 +186,13 @@ $().ready(function() {
 				required: "Please enter your price",
 				number: "Please enter only number"
 			},
-			visible: "Please select option",
+			status: "Please select option",
 		},
 		errorPlacement: function(error, element) 
         {
             if ( element.is(":radio") ) {
                 error.appendTo( element.parents('.radio_group'));
-            } else { // This is the default behavior 
+            } else { 
                 error.insertAfter( element );
             }
          }
@@ -201,19 +202,19 @@ $().ready(function() {
 			category_name: {
 				required: true,
 			},
-			visible: {
+			status: {
 				required: true,
 			}
 		},
 		messages: {
 			category_name: "Please enter category name",
-			visible: "Please select one option"
+			status: "Please select one option"
 		},
 		errorPlacement: function(error, element) 
         {
             if ( element.is(":radio") ) {
                 error.appendTo( element.parents('.radio_group'));
-            } else { // This is the default behavior 
+            } else {
                 error.insertAfter( element );
             }
         }
@@ -228,7 +229,7 @@ $().ready(function() {
 				required: true,
 				minlength: 6
 			},
-			confirm_password: {
+			password_confirmation: {
 				required: true,
 				minlength: 6,
 				equalTo: "#password"
@@ -243,7 +244,7 @@ $().ready(function() {
 				required: "Please provide a new Password",
 				minlength: "Your Password must be at least 6 characters long"
 			},
-			confirm_password: {
+			password_confirmation: {
 				required: "Please provide a Password",
 				minlength: "Your Password must be at least 6 characters long",
 				equalTo: "Please enter the same Password as above"
@@ -256,7 +257,7 @@ $().ready(function() {
 				required: true,
 				minlength: 6
 			},
-			confirm_password: {
+			password_confirmation: {
 				required: true,
 				minlength: 6,
 				equalTo: "#password"
@@ -267,7 +268,7 @@ $().ready(function() {
 				required: "Please provide a new Password",
 				minlength: "Your Password must be at least 6 characters long"
 			},
-			confirm_password: {
+			password_confirmation: {
 				required: "Please provide a Password",
 				minlength: "Your Password must be at least 6 characters long",
 				equalTo: "Please enter the same Password as above"
@@ -276,7 +277,7 @@ $().ready(function() {
 	}),
 	$("#forgot_password").validate({
 		rules: {
-			email_id: {
+			email: {
 				required: true,
 				email: true
 			}
@@ -285,6 +286,20 @@ $().ready(function() {
 			email: {
 				required: "Please provide a valid email",
 				email: "Please enter a valid email address"
+			}
+		}
+	}),
+	$("#add_cart").validate({
+		rules: {
+			quantity: {
+				required: true,
+				digits: true,
+			}
+		},
+		messages: {
+			quantity: {
+				required: "Please provide a valid quantity",
+				quantity: "Please enter a valid quantity"
 			}
 		}
 	}),

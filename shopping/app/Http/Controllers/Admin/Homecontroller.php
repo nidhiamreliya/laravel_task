@@ -17,16 +17,32 @@ class Homecontroller extends BaseController
         parent::__construct();
     }  
 
+    /**
+     * Display home page for admin.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index()
     {
     	return view('admin.home');
     }
 
+    /**
+     * Display change password form.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function password_change()
     {
     	return view('admin.change_password');
     }
 
+    /**
+     * Update the Password in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
     public function update(Request $request)
     {
     	$hasher = Sentinel::getHasher();
@@ -37,12 +53,12 @@ class Homecontroller extends BaseController
 
         $user = Sentinel::getUser();
 
-        if (!$hasher->check($oldPassword, $user->password) || $password != $passwordConf) {
-            Session::flash('error', 'Check input is correct.');
-            return view('admin.change_password');
+        if (!$hasher->check($oldPassword, $user->password) || $password != $passwordConf) 
+        {
+            return view('admin.change_password')->withErrors('Check input is correct.');
         }
 
-        Sentinel::update($user, array('password' => $password));
+        Sentinel::update($user, ['password' => $password]);
         Session::flash('success','order successfully updated.');
         return redirect()->To('admin/password');
     }

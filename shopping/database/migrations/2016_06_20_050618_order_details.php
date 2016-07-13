@@ -17,6 +17,7 @@ class OrderDetails extends Migration
             $table->unsignedInteger('order_id');
             $table->unsignedInteger('product_id');
             $table->integer('quantity');
+            $table->timestamps();
 
             $table->foreign('order_id')->references('id')->on('orders');
             $table->foreign('product_id')->references('id')->on('products');

@@ -13,7 +13,8 @@ class LoginController extends BaseController
     public function __construct() 
     {
         parent::__construct();
-    }  
+    }
+
     /**
      * Display a Login form.
      */
@@ -21,6 +22,7 @@ class LoginController extends BaseController
     {
         return view('admin.Auth.login');
     }
+
     /**
      * Login the user
      */
@@ -49,6 +51,9 @@ class LoginController extends BaseController
         }
     }
 
+    /**
+     * Logout the admin
+     */
     public function logout()
     {
         Sentinel::logout();

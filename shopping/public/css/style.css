@@ -1234,10 +1234,9 @@ li.last_price span {
 }
 .products-grd{
 	float:left;
-	width:31.9%;
 	text-align: center;
 	position:relative;
-	margin: 5px;
+	margin-bottom: 15px;
 }
 .products-grd:hover div.pro-grd{
 	display:block;
@@ -1744,6 +1743,7 @@ span.valsa{
 /*-- single --*/
 .single{
 	padding:5em 0 0;
+	height: 400;
 }
 .details-left-info {
 float: left;
@@ -2177,7 +2177,7 @@ color: #000;
 }
 .reg ul {
 padding: 20;
-/*margin:0 0 22px 0;*/
+margin-bottom: 20px;
 }
 .reg span {
 width: 100%;
@@ -2210,6 +2210,7 @@ margin-top: 10px;
 .reg2 ul li {
 display: inline-block;
 width: 58%;
+color: #204056;
 }
 .reg2 ul li.text-info{
   width:20%;
